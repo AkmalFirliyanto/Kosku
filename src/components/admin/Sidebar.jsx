@@ -34,7 +34,7 @@ export default function Sidebar({ activeTab, setActiveTab }) {
   ]
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-64 z-40 bg-slate-50/80 backdrop-blur-md border-r border-slate-200 flex flex-col p-6 gap-2">
+    <aside className="h-full w-full bg-white md:bg-slate-50/80 backdrop-blur-md border-r border-slate-200 flex flex-col p-6 gap-2">
       <div className="mb-10 px-4">
         <h1 className="text-xl font-bold text-slate-900 tracking-tighter">Admin KosKu</h1>
         <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-1">Property Manager</p>

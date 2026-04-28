@@ -74,7 +74,7 @@ export default function PricesTab() {
       </header>
 
       <section className="glass-card rounded-3xl p-8 shadow-sm overflow-hidden border border-white/50">
-        <div className="overflow-x-auto">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-100">
@@ -120,6 +120,52 @@ export default function PricesTab() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden flex flex-col gap-4">
+          {prices.map((price) => (
+            <div key={price.id} className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm relative">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="font-bold text-slate-900 text-lg">{price.room_type}</p>
+                </div>
+                <button 
+                  onClick={() => toggleActive(price.id, price.is_active)}
+                  className={price.is_active ? 'toggle-switch-on scale-75 origin-top-right' : 'toggle-switch-off scale-75 origin-top-right'}
+                >
+                  <span className={price.is_active ? 'toggle-dot-on' : 'toggle-dot-off'} />
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-2 text-sm mb-4">
+                <div className="bg-slate-50 p-3 rounded-xl">
+                  <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Harian</p>
+                  <p className="font-medium text-slate-700">Rp {price.daily.toLocaleString('id-ID')}</p>
+                </div>
+                <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100">
+                  <p className="text-[10px] text-indigo-400 font-bold uppercase mb-1">Bulanan</p>
+                  <p className="font-bold text-indigo-600">Rp {price.monthly.toLocaleString('id-ID')}</p>
+                </div>
+                <div className="bg-slate-50 p-3 rounded-xl col-span-2">
+                  <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Tahunan</p>
+                  <p className="font-medium text-slate-700">Rp {price.yearly.toLocaleString('id-ID')}</p>
+                </div>
+              </div>
+              
+              <div className="flex justify-end gap-2 border-t border-slate-100 pt-4">
+                <button onClick={() => openModal(price)} className="flex-1 py-2 text-sm font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors flex items-center justify-center gap-2">
+                  <Edit2 className="w-4 h-4" /> Edit
+                </button>
+                <button onClick={() => handleDelete(price.id)} className="p-2 text-slate-400 hover:text-red-600 transition-colors bg-slate-50 hover:bg-red-50 rounded-xl">
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          ))}
+          {prices.length === 0 && (
+            <div className="text-center py-8 text-slate-500">Belum ada data harga.</div>
+          )}
         </div>
       </section>
 

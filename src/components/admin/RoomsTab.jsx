@@ -114,7 +114,7 @@ export default function RoomsTab() {
       </header>
 
       <section className="glass-card rounded-3xl p-8 shadow-sm overflow-hidden border border-white/50">
-        <div className="overflow-x-auto">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-100">
@@ -180,6 +180,69 @@ export default function RoomsTab() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden flex flex-col gap-4">
+          {rooms.map((room) => {
+            const availabilityRatio = room.total_count > 0 ? room.available_count / room.total_count : 0;
+            let statusBadge = null;
+            
+            if (room.available_count === 0) {
+              statusBadge = <span className="bg-slate-100 text-slate-500 px-3 py-1 rounded-full text-xs font-bold">Penuh</span>;
+            } else if (availabilityRatio < 0.3) {
+              statusBadge = <span className="bg-amber-50 text-amber-600 px-3 py-1 rounded-full text-xs font-bold">Sisa Sedikit</span>;
+            } else {
+              statusBadge = <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Tersedia</span>;
+            }
+
+            return (
+              <div key={room.id} className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm relative">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-xl bg-slate-100 overflow-hidden flex items-center justify-center shrink-0">
+                    {room.image_urls && room.image_urls.length > 0 ? (
+                      <img src={room.image_urls[0]} alt={room.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <ImageIcon className="w-6 h-6 text-slate-400" />
+                    )}
+                  </div>
+                  <div>
+                    <div className="flex flex-col gap-1 mb-1">
+                      <p className="font-bold text-slate-900 text-lg">{room.name}</p>
+                      <div>{statusBadge}</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-2 text-sm mb-4">
+                  <div className="bg-slate-50 p-2 rounded-xl text-center">
+                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Total</p>
+                    <p className="font-medium text-slate-700">{room.total_count}</p>
+                  </div>
+                  <div className="bg-indigo-50 p-2 rounded-xl text-center border border-indigo-100">
+                    <p className="text-[10px] text-indigo-400 font-bold uppercase mb-1">Kosong</p>
+                    <p className="font-bold text-indigo-600">{room.available_count}</p>
+                  </div>
+                  <div className="bg-slate-50 p-2 rounded-xl text-center">
+                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Ukuran</p>
+                    <p className="font-medium text-slate-700">{room.size_m2}m</p>
+                  </div>
+                </div>
+                
+                <div className="flex justify-end gap-2 border-t border-slate-100 pt-4">
+                  <button onClick={() => openModal(room)} className="flex-1 py-2 text-sm font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors flex items-center justify-center gap-2">
+                    <Edit2 className="w-4 h-4" /> Edit
+                  </button>
+                  <button onClick={() => handleDelete(room.id)} className="p-2 text-slate-400 hover:text-red-600 transition-colors bg-slate-50 hover:bg-red-50 rounded-xl">
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            )
+          })}
+          {rooms.length === 0 && (
+            <div className="text-center py-8 text-slate-500">Belum ada tipe kamar.</div>
+          )}
         </div>
       </section>
 

@@ -74,7 +74,7 @@ export default function FAQsTab() {
       </header>
 
       <section className="glass-card rounded-3xl p-8 shadow-sm overflow-hidden border border-white/50">
-        <div className="overflow-x-auto">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-100">
@@ -117,6 +117,38 @@ export default function FAQsTab() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden flex flex-col gap-4">
+          {faqs.map((faq) => (
+            <div key={faq.id} className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm relative">
+              <div className="flex justify-between items-start mb-3">
+                <div className="pr-12">
+                  <p className="font-bold text-slate-900 leading-snug">{faq.question}</p>
+                </div>
+                <button 
+                  onClick={() => toggleActive(faq.id, faq.is_active)}
+                  className={`absolute top-5 right-5 ${faq.is_active ? 'toggle-switch-on scale-75 origin-top-right' : 'toggle-switch-off scale-75 origin-top-right'}`}
+                >
+                  <span className={faq.is_active ? 'toggle-dot-on' : 'toggle-dot-off'} />
+                </button>
+              </div>
+              <p className="text-sm text-slate-500 mb-4 line-clamp-3">{faq.answer}</p>
+              
+              <div className="flex justify-end gap-2 border-t border-slate-100 pt-4">
+                <button onClick={() => openModal(faq)} className="flex-1 py-2 text-sm font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors flex items-center justify-center gap-2">
+                  <Edit2 className="w-4 h-4" /> Edit
+                </button>
+                <button onClick={() => handleDelete(faq.id)} className="p-2 text-slate-400 hover:text-red-600 transition-colors bg-slate-50 hover:bg-red-50 rounded-xl">
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          ))}
+          {faqs.length === 0 && (
+            <div className="text-center py-8 text-slate-500">Belum ada FAQ.</div>
+          )}
         </div>
       </section>
 
