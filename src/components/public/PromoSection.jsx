@@ -31,7 +31,7 @@ export default function PromoSection({ promos }) {
           </div>
           
           <div className="relative z-10 md:w-1/3 flex justify-end w-full">
-            <a href="#location" className="bg-white text-indigo-600 px-8 py-5 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95 w-full md:w-auto text-center text-lg shadow-lg">
+            <a href="#pricing" className="bg-white text-indigo-600 px-8 py-5 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95 w-full md:w-auto text-center text-lg shadow-lg">
               Klaim Promo
             </a>
           </div>
