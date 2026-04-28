@@ -45,4 +45,4 @@ KosKu adalah platform website profil dan manajemen kos-kosan modern yang diranca
 5. Buka [http://localhost:3000](http://localhost:3000) di browser Anda. Akses `/admin` untuk masuk ke halaman pengelola.
 
 ---
-**Dikembangkan oleh Akmal Firliyanto untuk keperluan Capstone Project.**
+**Dibuat untuk keperluan Capstone Project.**
