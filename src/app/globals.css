@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl font-extrabold text-slate-900 tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-slate-500 mt-4 max-w-2xl mx-auto;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .hero-pattern {
+    background-color: #fcf8ff;
+    background-image: radial-gradient(#4f46e5 0.5px, transparent 0.5px), radial-gradient(#4f46e5 0.5px, #fcf8ff 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.05;
+  }
+
+  /* Admin Table Styles */
+  .admin-table {
+    @apply w-full text-sm text-left border-collapse;
+  }
+  .admin-table th {
+    @apply px-6 py-4 bg-slate-50 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-200 text-xs;
+  }
+  .admin-table td {
+    @apply px-6 py-4 border-b border-slate-100 align-middle;
+  }
+  .admin-table tbody tr {
+    @apply hover:bg-slate-50/50 transition-colors;
+  }
+
+  /* Shared Input/Button Styles */
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all outline-none font-medium text-slate-700;
+  }
+  
+  .btn-primary {
+    @apply inline-flex justify-center items-center bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/20 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  /* Toggle Switch */
+  .toggle-switch-on {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-primary-500 transition-colors focus:outline-none focus:ring-4 focus:ring-primary-500/20;
+  }
+  .toggle-switch-off {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-slate-300 transition-colors focus:outline-none focus:ring-4 focus:ring-slate-400/20;
+  }
+  .toggle-dot-on {
+    @apply inline-block h-4 w-4 translate-x-6 rounded-full bg-white transition-transform shadow-sm;
+  }
+  .toggle-dot-off {
+    @apply inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition-transform shadow-sm;
+  }
+}
