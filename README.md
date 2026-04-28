@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KosKu - Manajemen Kos Modern
 
-## Getting Started
+KosKu adalah platform website profil dan manajemen kos-kosan modern yang dirancang khusus sebagai bagian dari **Tugas Capstone Project**. Aplikasi ini memberikan kemudahan bagi pemilik kos (Admin) dalam mengelola ketersediaan kamar, mengatur harga, dan membuat promo, sekaligus memberikan pengalaman (*UI/UX*) terbaik bagi calon penghuni yang sedang mencari kamar.
 
-First, run the development server:
+## ✨ Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🏢 Halaman Publik (Calon Penghuni)
+- **Desain Modern & Responsif:** Tampilan elegan (menggunakan *Tailwind CSS*) yang beradaptasi sempurna di perangkat laptop maupun *smartphone* (HP).
+- **Cek Ketersediaan Real-Time:** Menampilkan jumlah kamar yang masih kosong langsung secara presisi.
+- **Pemesanan Mudah:** Terintegrasi langsung dengan WhatsApp Admin untuk *booking* kamar.
+- **Informasi Transparan:** Calon penghuni bisa melihat detail harga, promo yang berlaku, foto galeri kamar, lokasi Maps, hingga FAQ dengan jelas.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔐 Halaman Admin (Pemilik Kos)
+- **Manajemen Tipe Kamar:** Menambah, mengedit, menghapus, serta mengatur sisa ketersediaan unit kamar.
+- **Upload Galeri Foto:** Terintegrasi dengan *Supabase Storage* untuk menyimpan foto-foto kamar.
+- **Manajemen Harga & Promo:** Mengatur paket harga (harian/bulanan/tahunan) dan diskon secara dinamis.
+- **Sistem Keamanan Berlapis:** Melindungi halaman dashboard dengan Supabase Authentication & *Middleware* Next.js, sehingga hanya yang memiliki *password* yang bisa masuk.
+- **Tampilan Khusus Mobile:** Admin tetap bisa mengedit data kos dengan nyaman hanya melalui HP berkat layout *Card Responsive*.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Teknologi yang Digunakan
+- **Frontend Framework:** Next.js 14 (App Router), React
+- **Styling:** Vanilla CSS, Tailwind CSS, Lucide Icons
+- **Backend & Database:** Supabase (PostgreSQL, Auth, Storage)
+- **Deployment:** Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 Cara Menjalankan Project
 
-## Learn More
+1. *Clone repository* ini:
+   ```bash
+   git clone https://github.com/AkmalFirliyanto/Kosku.git
+   ```
+2. Instal *library/dependencies*:
+   ```bash
+   npm install
+   ```
+3. Atur variabel lingkungan. Buat file bernama `.env.local` dan isi dengan:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=url_supabase_kamu
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=anon_key_supabase_kamu
+   ```
+4. Jalankan server lokal:
+   ```bash
+   npm run dev
+   ```
+5. Buka [http://localhost:3000](http://localhost:3000) di browser Anda. Akses `/admin` untuk masuk ke halaman pengelola.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+**Dikembangkan oleh Akmal Firliyanto untuk keperluan Capstone Project.**
